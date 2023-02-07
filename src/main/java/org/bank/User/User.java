@@ -4,6 +4,8 @@ public class User {
     private int id;
     private String firstName;
     private String lastName;
+
+    private int birthYear;
     private String email;
     private String userName;
     private String passWord;
@@ -13,10 +15,13 @@ public class User {
         System.out.println("User Created");
     }
 
-    public User(int id, String firstName, String lastName, String email, String userName, String passWord, int checkingAccountNumber) {
+
+
+    public User(int id, String firstName, String lastName, int birthYear, String email, String userName, String passWord, int checkingAccountNumber) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.birthYear = birthYear;
         this.email = email;
         this.userName = userName;
         this.passWord = passWord;
@@ -77,6 +82,14 @@ public class User {
 
     public void setCheckingAccountNumber(int checkingAccountNumber) {
         this.checkingAccountNumber = checkingAccountNumber;
+    }
+
+    public int getBirthYear() {
+        return birthYear;
+    }
+
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
     }
 
     @Override
