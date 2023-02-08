@@ -9,8 +9,8 @@ public class ConnectionFactory {
     private static Connection connection = null;
 
     static final String CONNECTION_USERNAME = "root";
-    static final String CONNECTION_PASSWORD = "Genesis1947";
-    static final String CONNECTION_HOST = "jdbc:mysql://localhost:3306/";
+    static final String CONNECTION_PASSWORD = "root";
+    static final String CONNECTION_HOST = "jdbc:mysql://localhost:3306/bank";
 
     private ConnectionFactory(){
 
