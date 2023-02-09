@@ -42,8 +42,14 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public void deleteUser(int id) {
-
+    public void deleteUser(int id) throws SQLException {
+    String sql = "delete users where id= " + id;
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+    int count = preparedStatement.executeUpdate();
+    if(count > 0)
+        System.out.println("User has been deleted");
+    else
+        System.out.println("Something happened");
     }
 
     @Override
@@ -52,7 +58,16 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public User loginAccount(int id) {
+    public User loginAccount(int id) throws SQLException {
+//        change this to be ResultSet
+        String sql = "select * from users where id = " + id;
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        int count = preparedStatement.executeUpdate();
+        if(count > 0)
+            System.out.println("User found");
+        else
+            System.out.println("Something went wrong");
         return null;
     }
 

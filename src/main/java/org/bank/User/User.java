@@ -11,9 +11,8 @@ public class User {
     private String passWord;
     private int checkingAccountNumber;
 
-    public User(){
-        System.out.println("User Created");
-    }
+    public User()
+    {}
 
 
 

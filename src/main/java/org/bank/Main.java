@@ -23,6 +23,7 @@ public class Main {
 //            options 1 and 2 are being worked on
             System.out.println("Option 1: New User");
             System.out.println("Option 2: Existing User");
+
 //            option 3 will be next
             System.out.println("Option 3: Hotel Reservation");
             System.out.println("Option 9: Exit");
@@ -51,12 +52,30 @@ public class Main {
                     System.out.println("Welcome " + firstName + " " + lastName);
                     System.out.println("*******************************************");
                     System.out.println("Please press 9 to return to the main menu");
-                    int nine = menu.nextInt();
-
+                    int doNothing = menu.nextInt();
+//make a smoother menu transition
                     break;
 
+//                    update user
                 case 2:
-                    System.out.println("Bang");
+                    System.out.println("Welcome Back!!");
+                    System.out.println("*******************************************");
+                    System.out.println("What would you like to do?");
+                    System.out.println();
+                    System.out.println("Option 1: Login");
+                    System.out.println("Option 2: Update contact info");
+                    break;
+                case 2:
+
+                    System.out.println("Please sign in");
+                    System.out.println("Whats your first name?");
+                    String loginFirstName = menu.next();
+                    user.setFirstName(loginFirstName);
+                    System.out.println("Year of Birth?");
+                    int loginBirth = menu.nextInt();
+                    user.setBirthYear(loginBirth);
+                    userDAO.loginAccount(loginBirth);
+
                     break;
 
 //                    breaks out of the while loop

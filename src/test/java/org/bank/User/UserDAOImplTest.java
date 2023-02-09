@@ -29,4 +29,8 @@ class UserDAOImplTest {
     @Test
     void userById() {
     }
+
+    @Test
+    void testAddUser() {
+    }
 }
