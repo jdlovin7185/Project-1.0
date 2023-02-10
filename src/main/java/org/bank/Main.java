@@ -53,10 +53,10 @@ public class Main {
                     System.out.println("*******************************************");
                     System.out.println("Please press 9 to return to the main menu");
                     int doNothing = menu.nextInt();
-//make a smoother menu transition
+//                  make a smoother menu transition
                     break;
 
-//                    update user
+//                  user functionality
                 case 2:
                     System.out.println("Welcome Back!!");
                     System.out.println("*******************************************");
@@ -64,18 +64,41 @@ public class Main {
                     System.out.println();
                     System.out.println("Option 1: Login");
                     System.out.println("Option 2: Update contact info");
-                    break;
-                case 2:
+                    System.out.println("Option 3: Delete Account");
+                    menuSelection = menu.nextInt();
 
-                    System.out.println("Please sign in");
-                    System.out.println("Whats your first name?");
-                    String loginFirstName = menu.next();
-                    user.setFirstName(loginFirstName);
-                    System.out.println("Year of Birth?");
-                    int loginBirth = menu.nextInt();
-                    user.setBirthYear(loginBirth);
-                    userDAO.loginAccount(loginBirth);
+//                  ****************** user area ***************************
+                    switch(menuSelection){
 
+//                        login functionality
+                        case 1:
+                            break;
+
+//                            update user info
+                        case 2:
+                            System.out.println("Lets update your contact info");
+                            System.out.println("*******************************************");
+                            System.out.println("Whats your first name?");
+                            String updateFirstName = menu.next();
+                            user.setFirstName(updateFirstName);
+                            System.out.println("Whats your last name?");
+                            String updateLastName = menu.next();
+                            user.setLastName(updateLastName);
+                            System.out.println("Change your birth year to?");
+                            int updateBirthYear = menu.nextInt();
+                            user.setBirthYear(updateBirthYear);
+                            userDAO.updateUser(user);
+                            break;
+
+//                          delete a user
+                        case 3:
+                            System.out.println("Which user would you like to delete?");
+                            System.out.println("Please provide an ID for your account");
+                            int id = menu.nextInt();
+                            userDAO.deleteUser(id);
+                            System.out.println("Account has been deleted");
+                            break;
+                    }
                     break;
 
 //                    breaks out of the while loop
