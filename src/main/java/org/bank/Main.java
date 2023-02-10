@@ -86,6 +86,9 @@ public class Main {
                             user.setLastName(updateLastName);
                             System.out.println("Change your birth year to?");
                             int updateBirthYear = menu.nextInt();
+                            System.out.println("Whats your id?");
+                            int updateUserId = menu.nextInt();
+                            user.setId(updateUserId);
                             user.setBirthYear(updateBirthYear);
                             userDAO.updateUser(user);
                             break;

@@ -37,11 +37,12 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public void updateUser(User user) throws SQLException {
-        String sql = "update users set firstName = ?, lastName = ?, birthYear = ?";
+        String sql = "update users set firstName = ?, lastName = ?, birthYear = ? where id=?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, user.getFirstName());
         preparedStatement.setString(2, user.getLastName());
         preparedStatement.setInt(3, user.getBirthYear());
+        preparedStatement.setInt(4,user.getId());
         int count = preparedStatement.executeUpdate();
         if (count > 0)
             System.out.println("User updated");
