@@ -2,9 +2,8 @@ package org.bank.User;
 
 import org.bank.ConnectionFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAOImpl implements UserDAO{
@@ -66,7 +65,8 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public void addCheckingAccount(User user) {
-
+//this can be added later
+//        this function will be added when the bank service is created
     }
 
     @Override
@@ -77,12 +77,42 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public List<User> getUsers() {
-        return null;
+    public List<User> getUsers() throws SQLException {
+        List<User> users = new ArrayList<>();
+        User user;
+        String sql = "select * from users";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        while(resultSet.next()){
+            int userId = resultSet.getInt(1);
+            String firstName = resultSet.getString(2);
+            String lastName = resultSet.getString(3);
+            int birthYear = resultSet.getInt(4);
+            user = new User(userId, firstName, lastName, birthYear);
+            users.add(user);
+        }
+        return users;
     }
 
     @Override
-    public User userById(int id) {
-        return null;
+    public User userById(int id) throws SQLException {
+//        this will return a user by their ID provided in the database
+        User user = new User();
+        String sql = "select * from users where id= " + id;
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        if (resultSet.next()){
+            int userId = resultSet.getInt(1);
+            String firstName = resultSet.getString(2);
+            String lastName = resultSet.getString(3);
+            int birthYear = resultSet.getInt(4);
+            user = new User(userId, firstName, lastName, birthYear);
+        } else {
+            System.out.println("Something happened");
+        }
+        return user;
+
+
+
     }
 }

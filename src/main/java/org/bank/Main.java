@@ -5,10 +5,11 @@ import org.bank.User.UserDAO;
 import org.bank.User.UserDAOFactory;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static <Users> void main(String[] args) throws SQLException {
         User user = new User();
         UserDAO userDAO = UserDAOFactory.getUserDao();
         Scanner menu = new Scanner(System.in);
@@ -65,6 +66,9 @@ public class Main {
                     System.out.println("Option 1: Login");
                     System.out.println("Option 2: Update contact info");
                     System.out.println("Option 3: Delete Account");
+                    System.out.println("Option 4: Get a list of accounts");
+                    System.out.println("Option 5: Get Account Info");
+
                     menuSelection = menu.nextInt();
 
 //                  ****************** user area ***************************
@@ -100,6 +104,25 @@ public class Main {
                             int id = menu.nextInt();
                             userDAO.deleteUser(id);
                             System.out.println("Account has been deleted");
+                            break;
+
+                        case 4:
+//                          get a list of users
+                            System.out.println("List of users");
+                            List<User> listOfUsers = userDAO.getUsers();
+                            for (User userList : listOfUsers)
+                                System.out.println(userList);
+                            break;
+
+                        case 5:
+//                            get account info based off of their ID
+                            System.out.println("Lets get your account info");
+                            System.out.println("*******************************************");
+                            System.out.println("What is your account ID?");
+                            int getAccountID = menu.nextInt();
+                            User userInfo =  userDAO.userById(getAccountID);
+                            System.out.println(userInfo);
+//                          System.out.println("You are actually not an idiot");
                             break;
                     }
                     break;

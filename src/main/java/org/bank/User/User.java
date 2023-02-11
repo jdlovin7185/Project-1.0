@@ -27,6 +27,13 @@ public class User {
         this.checkingAccountNumber = checkingAccountNumber;
     }
 
+    public User(int id, String firstname, String lastname, int birthyear) {
+        this.id = id;
+        this.firstName = firstname;
+        this.lastName = lastname;
+        this.birthYear = birthyear;
+    }
+
     public int getId() {
         return id;
     }
@@ -97,7 +104,7 @@ public class User {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
+                ", birthYear=" + birthYear +
                 '}';
     }
 }
